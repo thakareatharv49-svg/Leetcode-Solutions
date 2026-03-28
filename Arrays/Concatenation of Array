@@ -1,0 +1,14 @@
+// Create a new array of size 2n and copy the original array twice using a loop.
+
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+       int n = nums.length;
+       int[] ans = new int[2 * n];  // makeing new array ans of size 2n
+
+       for(int i = 0;i < n;i++)  {     
+           ans[i] = nums[i];         //copying nums[i] into ans[i]
+           ans[i + n] = nums[i];     // copying on (i + n) if i = o, n = 3 then == 4th index
+       }
+       return ans;
+    }
+}
