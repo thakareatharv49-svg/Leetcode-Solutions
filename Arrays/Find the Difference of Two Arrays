@@ -1,0 +1,44 @@
+// Find unique elements present in one array but not in the other.
+
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<Integer> list1 = new ArrayList<>();   // creating the list1 and list2
+        List<Integer> list2 = new ArrayList<>();
+
+      // checking nums1 elements not in nums2 
+        for(int i = 0;i < nums1.length;i++) {
+            boolean found = false;
+            
+            for(int j = 0;j < nums2.length;j++) {
+                if(nums1[i] == nums2[j]) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found && !list1.contains(nums1[i])) {
+                list1.add(nums1[i]);
+            }
+        }
+
+     // checking nums2 elements not in nums1
+         for(int i = 0;i < nums2.length;i++) {
+            boolean found = false;
+            
+            for(int j = 0;j < nums1.length;j++) {
+                if(nums2[i] == nums1[j]) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found && !list2.contains(nums2[i])) {
+                list2.add(nums2[i]);
+            }
+         } 
+            List<List<Integer>> result = new ArrayList<>(); // making list result
+
+            result.add(list1);  // adding both the list in result
+            result.add(list2);
+
+            return result;
+    }
+}
