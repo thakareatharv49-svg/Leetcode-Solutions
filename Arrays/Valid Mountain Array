@@ -1,0 +1,26 @@
+//Check if array forms a mountain by verifying increasing then decreasing pattern.
+
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        int n = arr.length;
+
+        if (n < 3) return false;
+
+        int i = 0;
+
+        // go up
+        while (i + 1 < n && arr[i] < arr[i + 1]) {
+            i++;
+        }
+
+        // peak check
+        if (i == 0 || i == n - 1) return false;
+
+        // go down
+        while (i + 1 < n && arr[i] > arr[i + 1]) {
+            i++;
+        }
+
+        return i == n - 1;
+    }
+}
