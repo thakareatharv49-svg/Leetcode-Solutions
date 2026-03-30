@@ -1,0 +1,21 @@
+//Remove duplicates, sort the array, and return the third maximum or the maximum if it doesn’t exist.
+
+class Solution {
+    public int thirdMax(int[] nums) {
+       HashSet<Integer> set = new HashSet<>(); // creating new hashset
+
+        for(int num : nums) {  //checking if duplicate present
+        set.add(num);
+       }
+
+       ArrayList<Integer> list = new ArrayList<>(set);  // creating new arraylist
+
+       Collections.sort(list); // sorting list
+
+       int n = list.size();
+
+       if(n < 3) return list.get(n-1); // if n is lesser than 3 returning maximum number
+
+       return list.get(n-3);      // returning 3 maximum number 
+    }
+}
