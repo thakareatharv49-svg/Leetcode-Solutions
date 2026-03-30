@@ -1,0 +1,16 @@
+Reverse the character array by using extra space and copying elements in reverse order.
+
+class Solution {
+    public void reverseString(char[] s) {
+
+        String str = new String(s);          // convert to string from array
+        StringBuilder sb = new StringBuilder(str);  // converting from string to stringbuilder for modification
+
+        sb.reverse();     // reverse the string
+
+        // copy back to array
+        for(int i = 0; i < s.length; i++) {
+            s[i] = sb.charAt(i);
+        }
+    }
+}
