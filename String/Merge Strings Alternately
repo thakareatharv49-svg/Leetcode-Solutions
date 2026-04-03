@@ -1,0 +1,21 @@
+//Merge two strings by alternating characters from each, appending any remaining characters at the end.
+
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+       StringBuilder result = new StringBuilder();              // creating string builder to modify
+       int i = 0; 
+       int j = 0; 
+
+       while(i < word1.length() && j < word2.length()) {        //for alternating string
+         result.append(word1.charAt(i++));
+         result.append(word2.charAt(j++));
+       }
+        while(i < word1.length()) {                          //if word2 end before word1
+           result.append(word1.charAt(i++));
+        }
+       while(j < word2.length()) {                           //if word1 end before word2
+          result.append(word2.charAt(j++));
+       }  
+       return result.toString();                          //returning in string
+    }
+}
