@@ -1,0 +1,29 @@
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+
+        // Remove matching nodes from the beginning
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
+
+        // If the list becomes empty
+        if (head == null) {
+            return null;
+        }
+
+        ListNode temp = head;
+
+        while (temp != null && temp.next != null) {
+
+            if (temp.next.val == val) {
+                // Delete the node
+                temp.next = temp.next.next;
+            } else {
+                // Move forward only if no deletion happened
+                temp = temp.next;
+            }
+        }
+
+        return head;
+    }
+}
