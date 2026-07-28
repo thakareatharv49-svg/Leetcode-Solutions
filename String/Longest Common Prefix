@@ -1,0 +1,30 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+
+        // Take the first string as the initial prefix
+        String prefix = strs[0];
+
+        // Compare with every other string
+        for (int i = 1; i < strs.length; i++) {
+
+            int j = 0;
+
+            // Compare character by character
+            while (j < prefix.length() &&
+                   j < strs[i].length() &&
+                   prefix.charAt(j) == strs[i].charAt(j)) {
+                j++;
+            }
+
+            // Update the common prefix
+            prefix = prefix.substring(0, j);
+
+            // If no common prefix exists
+            if (prefix.isEmpty()) {
+                return "";
+            }
+        }
+
+        return prefix;
+    }
+}
