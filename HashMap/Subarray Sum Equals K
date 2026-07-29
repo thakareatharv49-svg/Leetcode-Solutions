@@ -1,0 +1,22 @@
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        HashMap<Integer,Integer> map = new HashMap<>(); //hashmap created
+
+        map.put(0,1);           //store sum = 0 one times
+        int sum = 0;
+        int count = 0;
+
+        for(int i =0;i < nums.length;i++) {
+            sum += nums[i];             //running sum calculating
+
+            if(map.containsKey(sum - k)) {            //if sum - k is already present in map then count++
+                count += map.get(sum - k);          
+            }
+             map.put(sum, map.getOrDefault(sum, 0) + 1);      update the hashmap
+        }
+       
+         return count;
+
+    }
+   
+}
