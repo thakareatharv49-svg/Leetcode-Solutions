@@ -1,0 +1,33 @@
+import java.util.Arrays;
+
+class Solution {
+    public int dominantIndex(int[] nums) {
+
+        int n = nums.length;
+
+        // Copy the original array
+        int[] copy = Arrays.copyOf(nums, n);
+
+        // Sort the copied array
+        Arrays.sort(copy);
+
+        // Largest element
+        int max = copy[n - 1];
+
+        // Check the condition
+        for (int i = 0; i < n - 1; i++) {
+            if (max < 2 * copy[i]) {
+                return -1;
+            }
+        }
+
+        // Find the original index of the largest element
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == max) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
