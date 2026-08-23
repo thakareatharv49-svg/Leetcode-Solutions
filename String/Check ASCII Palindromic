@@ -1,0 +1,34 @@
+class Solution {
+    public boolean isPalindromic(String s) {
+
+        StringBuilder result = new StringBuilder();
+
+        for (char ch : s.toCharArray()) {
+
+            int value = ch;
+
+            String binary = Integer.toBinaryString(value);
+
+            while (binary.length() < 8) {
+                binary = "0" + binary;
+            }
+
+            result.append(binary);
+        }
+
+        int left = 0;
+        int right = result.length() - 1;
+
+        while (left < right) {
+
+            if (result.charAt(left) != result.charAt(right)) {
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+}
