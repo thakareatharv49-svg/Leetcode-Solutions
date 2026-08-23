@@ -1,0 +1,44 @@
+class Solution {
+    public List<List<Integer>> findDisappearedNumbers(int[] nums, int lower, int upper) {
+
+        Set<Integer> set = new HashSet<>();
+
+        // Put all nums into HashSet
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        // Find missing numbers
+        List<Integer> missing = new ArrayList<>();
+
+        for (int i = lower; i <= upper; i++) {
+            if (!set.contains(i)) {
+                missing.add(i);
+            }
+        }
+
+        // Create result
+        List<List<Integer>> result = new ArrayList<>();
+
+        int i = 0;
+
+        // Group consecutive numbers
+        while (i < missing.size()) {
+
+            int start = missing.get(i);
+
+            while (i + 1 < missing.size()
+                    && missing.get(i + 1) == missing.get(i) + 1) {
+                i++;
+            }
+
+            int end = missing.get(i);
+
+            result.add(Arrays.asList(start, end));
+
+            i++;
+        }
+
+        return result;
+    }
+}
