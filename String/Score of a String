@@ -1,0 +1,18 @@
+class Solution {
+    public int scoreOfString(String s) {
+
+        List<Integer> values = new ArrayList<>();
+
+        for (char ch : s.toCharArray()) {
+            values.add((int) ch);
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < values.size() - 1; i++) {
+            result += Math.abs(values.get(i) - values.get(i + 1));
+        }
+
+        return result;
+    }
+}
