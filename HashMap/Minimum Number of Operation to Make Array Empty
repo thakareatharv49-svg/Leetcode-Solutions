@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Solution {
+    public int minOperations(int[] nums) {
+
+        // Store number -> frequency
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        int count = 0;
+
+        // Check every frequency
+        for (int frequency : map.values()) {
+
+            // Cannot remove only one element
+            if (frequency == 1) {
+                return -1;
+            }
+
+            // Calculate minimum operations
+            count += (frequency + 2) / 3;
+        }
+
+        return count;
+    }
+}
