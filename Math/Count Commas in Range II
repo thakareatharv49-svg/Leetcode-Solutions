@@ -1,0 +1,37 @@
+class Solution {
+    public long countCommas(long n) {
+
+        if (n < 1000) {
+            return 0;
+        }
+
+        long answer = 0;
+        long start = 1000;
+
+        while (start <= n) {
+
+            long end = Math.min(n, start * 1000 - 1);
+
+            // Count digits of end
+            long temp = end;
+            long count = 0;
+
+            while (temp > 0) {
+                temp = temp / 10;
+                count++;
+            }
+
+            // Number of commas
+            long commas = (count - 1) / 3;
+
+            // Number of numbers in this range
+            long numbers = end - start + 1;
+
+            answer += commas * numbers;
+
+            start = start * 1000;
+        }
+
+        return answer;
+    }
+}
