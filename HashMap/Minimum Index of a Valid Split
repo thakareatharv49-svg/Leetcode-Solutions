@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Solution {
+    public int minimumIndex(List<Integer> nums) {
+
+        int n = nums.size();
+
+        // Step 1: Count frequency of every number
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        // Step 2: Find the dominant element
+        int dominant = 0;
+        int totalCount = 0;
+
+        for (int num : map.keySet()) {
+            if (map.get(num) * 2 > n) {
+                dominant = num;
+                totalCount = map.get(num);
+                break;
+            }
+        }
+
+        // Step 3: Check every possible split
+        int leftCount = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            // Count dominant element in left part
+            if (nums.get(i) == dominant) {
+                leftCount++;
+            }
+
+            // Count dominant element in right part
+            int rightCount = totalCount - leftCount;
+
+            int leftLength = i + 1;
+            int rightLength = n - i - 1;
+
+            // Check if dominant in both parts
+            if (leftCount * 2 > leftLength &&
+                rightCount * 2 > rightLength) {
+
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
