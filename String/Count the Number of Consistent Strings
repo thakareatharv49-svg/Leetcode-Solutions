@@ -1,0 +1,39 @@
+import java.util.HashSet;
+
+class Solution {
+    public int countConsistentStrings(String allowed, String[] words) {
+
+        int count = 0;
+
+        HashSet<Character> set = new HashSet<>();
+
+        // Add allowed characters to HashSet
+        for (char ch : allowed.toCharArray()) {
+            set.add(ch);
+        }
+
+        // Check every word
+        for (int i = 0; i < words.length; i++) {
+
+            boolean consistent = true;
+
+            // Check every character in the current word
+            for (int j = 0; j < words[i].length(); j++) {
+
+                char ch = words[i].charAt(j);
+
+                if (!set.contains(ch)) {
+                    consistent = false;
+                    break;
+                }
+            }
+
+            // If all characters are allowed
+            if (consistent) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
